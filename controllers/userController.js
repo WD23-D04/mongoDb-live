@@ -1,5 +1,6 @@
 import { User } from '../schemas/userSchema.js';
 import { handleError } from '../utils/handleError.js';
+import { handleSingleRequest } from '../utils/handleSingleRequest.js';
 
 // addSingleUser
 
@@ -17,9 +18,7 @@ export const addSingleUser = async (req, res) => {
 export const getSingleUser = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
-    user
-      ? res.status(200).json(user)
-      : res.status(404).json({ msg: `user ${req.params.id} not found` });
+    handleSingleRequest(req, res, user)
   } catch (e) {
     handleError(res, e);
   }
@@ -43,9 +42,7 @@ export const updateSingleUser = async (req, res) => {
     const user = await User.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
-    user
-      ? res.status(200).json(user)
-      : res.status(404).json({ msg: `user ${req.params.id} not found` });
+    handleSingleRequest(req, res, user)
   } catch (e) {
     handleError(res, e);
   }
@@ -56,7 +53,7 @@ export const updateSingleUser = async (req, res) => {
 export const deleteSingleUser = async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(req.params.id);
-    res.status(200).json(user);
+    handleSingleRequest(req, res, user)
   } catch (e) {
     handleError(res, e);
   }

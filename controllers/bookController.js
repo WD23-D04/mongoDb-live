@@ -1,5 +1,6 @@
 import { Book } from '../schemas/bookSchema.js';
 import { handleError } from '../utils/handleError.js';
+import { handleSingleRequest } from '../utils/handleSingleRequest.js';
 
 export const addSingleBook = async (req, res) => {
   try {
@@ -14,9 +15,7 @@ export const getSingleBook = async (req, res) => {
   try {
     /* const book = await Book.find({_id : ObjectId(req.params.id)}) */
     const book = await Book.findById(req.params.id);
-    book
-      ? res.status(201).json(book)
-      : res.status(404).json({ msg: `book not found ${req.params.id}` });
+    handleSingleRequest(req, res, book)
   } catch (e) {
     res.status(500).json(e);
   }
@@ -34,9 +33,7 @@ export const getAllBooks = async (req, res) => {
 export const updateSingleBook = async (req, res) => {
   try {
     const book = await Book.findByIdAndUpdate(req.params.id, req.body);
-    book
-      ? res.status(201).json(book)
-      : res.status(404).json({ msg: `book not found ${req.params.id}` });
+    handleSingleRequest(req, res, book)
   } catch (e) {
     handleError(res, e);
   }
@@ -46,9 +43,7 @@ export const deleteSingleBook = async (req, res) => {
   try {
     /* const book = await Book.deleteOne({_id : ObjectId(req.params.id)}); */
     const book = await Book.findByIdAndDelete(req.params.id);
-    book
-      ? res.status(201).json(book)
-      : res.status(404).json({ msg: `book not found ${req.params.id}` });
+    handleSingleRequest(req, res, book)
   } catch (e) {
     handleError(res, e);
   }

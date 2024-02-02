@@ -5,6 +5,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 import { booksRouter } from './routers/bookRouter.js';
 import { userRouter } from './routers/userRouter.js';
+import { authorRouter } from './routers/authorRouter.js';
+
 const app = express();
 const port = 7575;
 
@@ -13,7 +15,7 @@ app.use(cors());
 
 app.use('/books', booksRouter);
 app.use('/users', userRouter);
-
+app.use('/authors', authorRouter);
 const dbUrl = process.env.DB_URL;
 
 const connectToDb = async () => {

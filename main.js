@@ -26,6 +26,13 @@ const connectToDb = async () => {
   }
 };
 
-connectToDb().then(() =>
-  app.listen(port, console.log(`server is running on ${port}`))
-);
+const startServer = async () => {
+  try {
+    await connectToDb()
+    app.listen(port, console.log(`server is running on ${port}`))
+  } catch(e){
+    throw new Error(e)
+  }
+}
+
+startServer()

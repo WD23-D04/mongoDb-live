@@ -22,17 +22,17 @@ const connectToDb = async () => {
   try {
     await mongoose.connect(dbUrl);
   } catch (e) {
-    console.error(e);
+    throw new Error(e);
   }
 };
 
 const startServer = async () => {
   try {
-    await connectToDb()
-    app.listen(port, console.log(`server is running on ${port}`))
-  } catch(e){
-    throw new Error(e)
+    await connectToDb();
+    app.listen(port, console.log(`server is running on ${port}`));
+  } catch (e) {
+    throw new Error(e);
   }
-}
+};
 
-startServer()
+startServer();

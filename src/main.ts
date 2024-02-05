@@ -23,18 +23,18 @@ const dbUrl = process.env.DB_URL;
 
 const connectToDb = async () => {
   try {
-    await mongoose.connect(dbUrl);
-  } catch (e) {
-    throw new Error(e);
+    await mongoose.connect(dbUrl || '');
+  } catch (e: unknown) {
+    throw new Error((e as Error).message || 'Unknown error occurred');
   }
 };
 
 const startServer = async () => {
   try {
     await connectToDb();
-    app.listen(port, console.log(`server is running on ${port}`));
-  } catch (e) {
-    throw new Error(e);
+    app.listen(port, () => console.log(`server is running on ${port}`));
+  } catch (e: any) {
+    throw new Error((e as Error).message || 'Unknown error occurred');
   }
 };
 

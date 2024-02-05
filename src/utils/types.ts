@@ -4,7 +4,7 @@ export interface IAddress {
   street: string;
   number: string;
   zipCode: string;
-  state: string;
+  city: string;
 }
 
 export interface IAuthor extends IPerson {
@@ -31,20 +31,17 @@ export interface IEmployee extends IPerson {
   /* ...contactInformationSchema as IInformation, */
   phone: number[];
   email: string;
-  address: Schema.Types.Mixed;
+  address: IAddress;
   vacationDays: number;
-  vacationTaken: Date[];
-  leaveDays: Date[];
+  vacationTaken: [{ from: Date; to: Date }];
+  leaveDays: [{ from: Date; to: Date }];
   workHours: number;
-  books: IBook[];
+  books: [Types.ObjectId];
 }
-
 
 export interface IPerson {
   firstName: string;
   lastName: string;
 }
 
-export interface IUser extends IPerson {
-
-}
+export interface IUser extends IPerson {}

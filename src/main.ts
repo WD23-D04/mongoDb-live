@@ -7,7 +7,7 @@ import { booksRouter } from './routers/bookRouter.js';
 import { userRouter } from './routers/userRouter.js';
 import { authorRouter } from './routers/authorRouter.js';
 import { employeeRouter } from './routers/employeeRouter.js';
-
+import { fakerRouter } from './routers/fakeDataRouter.js';
 const app = express();
 const port = 7575;
 
@@ -18,6 +18,7 @@ app.use('/books', booksRouter);
 app.use('/users', userRouter);
 app.use('/authors', authorRouter);
 app.use('/employees', employeeRouter);
+app.use('/fake', fakerRouter);
 
 const dbUrl = process.env.DB_URL;
 

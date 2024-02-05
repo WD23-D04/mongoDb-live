@@ -1,6 +1,7 @@
 import { Author } from '../schemas/authorSchema.js';
 import { handleError } from '../utils/handleError.js';
 import { handleSingleRequest } from '../utils/handleSingleRequest.js';
+
 export const addSingleAuthor = async (req, res) => {
   try {
     const author = await Author.create(req.body);

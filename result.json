@@ -1,0 +1,45 @@
+[
+  {
+    "person": {
+      "firstName": "Berta",
+      "lastName": "Müller",
+      "_id": "65c0b758284a9c9d867ae53d"
+    },
+    "contactInformation": {
+      "phone": [45678945],
+      "email": "mail@mail.com",
+      "_id": "65c0b758284a9c9d867ae53e"
+    },
+    "address": {
+      "street": "String",
+      "number": "String",
+      "zipCode": "String",
+      "state": "String",
+      "_id": "65c0b758284a9c9d867ae53f"
+    },
+    "subscribedFrom": "2024-02-05T10:22:14.171Z",
+    "_id": "65c0b758284a9c9d867ae53c",
+    "createdAt": "2024-02-05T10:24:24.622Z",
+    "updatedAt": "2024-02-05T10:24:24.622Z"
+  },
+  {
+    "firstName": "Berta",
+    "lastName": "Müller",
+    "phone": [45678945],
+    "email": "mail@mail.com",
+    "address": {
+      "street": "String",
+      "number": "String",
+      "zipCode": "String",
+      "state": "String",
+      "_id": "65c0b758284a9c9d867ae53f"
+    },
+    "subscribedFrom": "2024-02-05T10:22:14.171Z",
+    "_id": "65c0b758284a9c9d867ae53c",
+    "createdAt": "2024-02-05T10:24:24.622Z",
+    "updatedAt": "2024-02-05T10:24:24.622Z"
+  },
+  "65c0bceda9d0ffbe1df6899c",
+  "65c0bd0804850988a8127629",
+  "65c0bd0804850988a8127629"
+]

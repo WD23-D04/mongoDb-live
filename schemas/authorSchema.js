@@ -1,14 +1,14 @@
+import mongoose from 'mongoose';
 import { Schema, model } from 'mongoose';
 import { personSchema } from './subDocuments/personSchema.js';
 
 export const authorSchema = new Schema(
   {
-    person: personSchema,
-    /* books : [books._id] */
+    ...personSchema.obj ,
+    books: [{ type: mongoose.Types.ObjectId, ref: 'Book' }],
     description: String,
   },
   {
-    collection: 'authors',
     timestamps: true,
   }
 );

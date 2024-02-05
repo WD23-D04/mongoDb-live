@@ -6,13 +6,13 @@ export const bookSchema = new mongoose.Schema(
     /* authors: [author._id], */
     pages: Number,
     available: Boolean,
-    publishedDate : Date,
-    publisher : String,
-    contributors : [{person : personSchema, role : String }],
+    publishedDate: { type: Date, default: new Date() },
+    publisher: String,
+    contributors: [{ ...personSchema.obj, role: String }],
   },
   {
     collection: 'books',
-    timestamps: true
+    timestamps: true,
   }
 );
 

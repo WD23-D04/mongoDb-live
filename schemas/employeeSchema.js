@@ -4,24 +4,23 @@ import { contactInformationSchema } from './subDocuments/contactInformationSchem
 import { addressSchema } from './subDocuments/addressSchema.js';
 
 export const employeeSchema = new mongoose.Schema(
-    {
-        person : personSchema,
-        contact : contactInformationSchema,
-        address: addressSchema,
-        vacationDays: Number,
-        vacationTaken: [{ from: Date, to: Date }],
-        leaveDays: [{ from: Date, to: Date }],
-        workHours: String,
-        /* books: [{
+  {
+    ...personSchema.obj,
+    ...contactInformationSchema.obj,
+    address: addressSchema,
+    vacationDays: Number,
+    vacationTaken: [{ from: Date, to: Date }],
+    leaveDays: [{ from: Date, to: Date }],
+    workHours: String,
+    /* books: [{
             book._id, borrowingDate: Date()
         }], */
-    },
-    {
-        collection: 'employees',
-        timestamps: true,
-        versionKey: false,
-    }
-)
+  },
+  {
+    collection: 'employees',
+    timestamps: true,
+    versionKey: false,
+  }
+);
 
-export const Employee = mongoose.model('Employee', employeeSchema)
-
+export const Employee = mongoose.model('Employee', employeeSchema);

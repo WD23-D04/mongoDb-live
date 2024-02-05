@@ -1,14 +1,14 @@
 import mongoose from 'mongoose';
 import { personSchema } from './subDocuments/personSchema.js';
-import { contactInformation } from './subDocuments/contactInformationSchema.js';
+import { contactInformationSchema } from './subDocuments/contactInformationSchema.js';
 import { addressSchema } from './subDocuments/addressSchema.js';
 
 export const userSchema = new mongoose.Schema(
   {
-    person: personSchema,
-    contactInformation: contactInformation,
+    person: { ...personSchema.obj },
+    contactInformation: { ...contactInformationSchema.obj },
     address: addressSchema,
-    subscribedFrom: Date,
+    subscribedFrom: { type: Date, default: new Date() },
     /* books : [books._id] */
   },
   {

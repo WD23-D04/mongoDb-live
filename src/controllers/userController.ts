@@ -1,10 +1,10 @@
+import { Request, Response } from 'express';
 import { User } from '../schemas/userSchema.js';
 import { handleError } from '../utils/handleError.js';
-import { handleSingleRequest } from '../utils/handleSingleRequest.js';
 
 // addSingleUser
 
-export const addSingleUser = async (req, res) => {
+export const addSingleUser = async (req: Request, res: Response) => {
   try {
     const user = await User.create(req.body);
     res.status(201).json(user);
@@ -15,10 +15,12 @@ export const addSingleUser = async (req, res) => {
 
 // getSingleUser
 
-export const getSingleUser = async (req, res) => {
+export const getSingleUser = async (req: Request, res: Response) => {
   try {
     const user = await User.findById(req.params.id).populate('books');
-    handleSingleRequest(req, res, user);
+    user
+      ? res.status(200).json(user)
+      : res.status(404).json({ msg: `${req.params.id} not found` });
   } catch (e) {
     handleError(res, e);
   }
@@ -26,7 +28,7 @@ export const getSingleUser = async (req, res) => {
 
 // getAllUsers
 
-export const getAllUsers = async (req, res) => {
+export const getAllUsers = async (req: Request, res: Response) => {
   try {
     const users = await User.find();
     res.status(200).json(users);
@@ -37,12 +39,14 @@ export const getAllUsers = async (req, res) => {
 
 // udpateSingleUser
 
-export const updateSingleUser = async (req, res) => {
+export const updateSingleUser = async (req: Request, res: Response) => {
   try {
     const user = await User.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
-    handleSingleRequest(req, res, user);
+    user
+      ? res.status(200).json(user)
+      : res.status(404).json({ msg: `${req.params.id} not found` });
   } catch (e) {
     handleError(res, e);
   }
@@ -50,16 +54,18 @@ export const updateSingleUser = async (req, res) => {
 
 // deleteSingleUser
 
-export const deleteSingleUser = async (req, res) => {
+export const deleteSingleUser = async (req: Request, res: Response) => {
   try {
     const user = await User.findByIdAndDelete(req.params.id);
-    handleSingleRequest(req, res, user);
+    user
+      ? res.status(200).json(user)
+      : res.status(404).json({ msg: `${req.params.id} not found` });
   } catch (e) {
     handleError(res, e);
   }
 };
 
-export const deleteAllUsers = async (req, res) => {
+export const deleteAllUsers = async (req: Request, res: Response) => {
   try {
     const users = await User.deleteMany();
     res.status(200).json(users);

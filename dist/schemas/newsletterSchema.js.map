@@ -1,0 +1,1 @@
+{"version":3,"file":"newsletterSchema.js","sourceRoot":"","sources":["../../src/schemas/newsletterSchema.ts"],"names":[],"mappings":";;;AAAA,uCAAyC;AAE5B,QAAA,gBAAgB,GAAG,IAAI,iBAAM,CAAC;IACzC,KAAK,EAAE,MAAM;IACb,OAAO,EAAE,CAAC,MAAM,CAAC;IACjB,QAAQ,EAAE,IAAI,EAAE;IAChB,2BAA2B;CAC5B,CAAC,CAAC;AAEU,QAAA,UAAU,GAAG,IAAA,gBAAK,EAAC,YAAY,EAAE,wBAAgB,CAAC,CAAC"}

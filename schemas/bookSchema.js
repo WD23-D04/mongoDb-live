@@ -1,11 +1,14 @@
 import mongoose from 'mongoose';
-
+import { personSchema } from './subDocuments/personSchema.js';
 export const bookSchema = new mongoose.Schema(
   {
     title: String,
-    authors: [String],
+    /* authors: [author._id], */
     pages: Number,
     available: Boolean,
+    publishedDate : Date,
+    publisher : String,
+    contributors : [{person : personSchema, role : String }],
   },
   {
     collection: 'books',

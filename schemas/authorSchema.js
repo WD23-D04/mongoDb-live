@@ -1,8 +1,11 @@
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
+import { personSchema } from './subDocuments/personSchema.js';
 
-export const authorSchema = new mongoose.Schema(
+export const authorSchema = new Schema(
   {
-    fullName: String,
+    person: personSchema,
+    /* books : [books._id] */
+    description: String,
   },
   {
     collection: 'authors',
@@ -10,4 +13,4 @@ export const authorSchema = new mongoose.Schema(
   }
 );
 
-export const Author = mongoose.model('Author', authorSchema);
+export const Author = model('Author', authorSchema);

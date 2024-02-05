@@ -1,17 +1,15 @@
 import mongoose from 'mongoose';
+import { personSchema } from './subDocuments/personSchema.js';
+import { contactInformation } from './subDocuments/contactInformationSchema.js';
+import { addressSchema } from './subDocuments/addressSchema.js';
 
 export const userSchema = new mongoose.Schema(
   {
-    firstName: String,
-    lastName: String,
-    mobile: Number,
-    email: String,
-    address: {
-      street: String,
-      number: String,
-      zipCode: String,
-      state: String,
-    },
+    person: personSchema,
+    contactInformation: contactInformation,
+    address: addressSchema,
+    subscribedFrom: Date,
+    /* books : [books._id] */
   },
   {
     collection: 'users',

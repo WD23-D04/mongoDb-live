@@ -1,10 +1,12 @@
 import mongoose from 'mongoose';
 import { Schema, model } from 'mongoose';
 import { personSchema } from './subDocuments/personSchema.js';
+import { IPerson } from '../utils/types.js';
+import { IAuthor } from '../utils/types.js';
 
-export const authorSchema = new Schema(
+export const authorSchema = new Schema<IAuthor>(
   {
-    ...personSchema.obj,
+    ...personSchema.obj as IPerson,
     books: [{ type: mongoose.Types.ObjectId, ref: 'Book' }],
     description: String,
   },
@@ -15,5 +17,3 @@ export const authorSchema = new Schema(
 );
 
 export const Author = model('Author', authorSchema);
-
-// Author.toLowerCase() + "s"

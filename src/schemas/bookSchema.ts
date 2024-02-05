@@ -1,9 +1,11 @@
 import mongoose from 'mongoose';
 import { personSchema } from './subDocuments/personSchema.js';
-export const bookSchema = new mongoose.Schema(
+import { IBook } from '../utils/types.js';
+
+export const bookSchema = new mongoose.Schema<IBook>(
   {
     title: String,
-    authors: { type: mongoose.Types.ObjectId, ref: 'Author' },
+    authors: [{ type: mongoose.Types.ObjectId, ref: 'Author' }],
     pages: Number,
     available: Boolean,
     publishedDate: { type: Date, default: new Date() },
